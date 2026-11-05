@@ -1,13 +1,13 @@
 # FITY 랜딩페이지 (Next.js · React)
 
-FITY 공식 랜딩페이지. 프로젝트 기술 스택(Next.js 16 App Router · React 19 · TypeScript)에 맞춰 만들었고, **정적 HTML로 내보내** S3 + CloudFront에 그대로 올린다.
+FITY 공식 랜딩페이지. 프로젝트 기술 스택(Next.js 16 App Router · React 19 · TypeScript)에 맞춰 만들었고, **정적 HTML로 내보내** Vercel로 배포한다.
 
 ## 실행
 ```bash
 pnpm install        # 또는 npm install
 cp .env.example .env.local   # 운영 값 채우기
 pnpm dev            # http://localhost:3000
-pnpm build          # out/ 폴더에 정적 사이트 생성 → S3 업로드
+pnpm build          # out/ 폴더에 정적 사이트 생성 (로컬 확인용)
 ```
 
 ## 구조
@@ -29,8 +29,17 @@ lib/
 public/           이미지 · 폰트
 ```
 
+## 배포 (Vercel)
+1. Vercel 대시보드 → **Add New → Project** → GitHub `PIUS-org/fity-landing` 저장소 Import
+2. Framework Preset은 **Next.js**로 자동 인식된다. 빌드 설정은 기본값 그대로 둔다.
+3. **Settings → Environment Variables**에 `.env.example`의 값(`SITE_URL`, `NEXT_PUBLIC_*`)을 입력한다.
+4. Deploy. 이후 `main` 브랜치에 push하면 자동 배포되고, PR마다 Preview 배포가 생성된다.
+5. 도메인 연결 : **Settings → Domains**에서 도메인 추가 후 `SITE_URL`도 해당 주소로 맞춘다.
+
+> 정적 export(`output: "export"`)라 환경 변수는 **빌드 시점**에 HTML에 들어간다. 값을 바꾸면 **Redeploy** 해야 반영된다.
+
 ## 배포 전 체크
-- `.env.local` 값 전부 채우기 (사이트 주소 · 전문가 로그인 · 스토어 · 정책 · 카카오톡 채널 · 이메일 · GA4 · 소유확인)
+- Vercel 환경 변수 전부 채우기 (사이트 주소 · 전문가 로그인 · 스토어 · 정책 · 카카오톡 채널 · 이메일 · GA4 · 소유확인). 로컬은 `.env.local`
 - 네이버 서치어드바이저 · 구글 서치 콘솔 등록, `sitemap.xml` 제출
 - 공식 App Store · Google Play 배지로 교체 (`components/StoreButtons.tsx`)
 - Pretendard 경량 버전(다이나믹 서브셋)으로 교체 (`public/fonts`, `app/globals.css` 첫 줄)

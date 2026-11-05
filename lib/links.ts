@@ -1,5 +1,5 @@
 /**
- * 운영 링크 설정 — .env(.local)의 NEXT_PUBLIC_* 값으로 채운다. (.env.example 참고)
+ * 운영 링크 설정 — .env(.local)의 값(SITE_URL, NEXT_PUBLIC_*)으로 채운다. (.env.example 참고)
  * 빈 값인 링크는 누르면 '준비 중' 안내가 뜬다. 운영 배포 전 모두 채울 것.
  */
 export const LINKS = {
@@ -7,7 +7,7 @@ export const LINKS = {
   ios: process.env.NEXT_PUBLIC_IOS_APP_STORE_URL ?? "",
   android: process.env.NEXT_PUBLIC_ANDROID_PLAY_STORE_URL ?? "",
   appSmart: process.env.NEXT_PUBLIC_APP_SMART_URL ?? "",
-  site: process.env.NEXT_PUBLIC_SITE_URL ?? "",
+  site: process.env.SITE_URL ?? "",
   terms: process.env.NEXT_PUBLIC_TERMS_URL ?? "",
   privacy: process.env.NEXT_PUBLIC_PRIVACY_URL ?? "",
   cs: process.env.NEXT_PUBLIC_CS_URL ?? "",
