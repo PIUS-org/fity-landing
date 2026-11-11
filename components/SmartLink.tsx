@@ -16,7 +16,7 @@ export default function SmartLink({ kind, loc, className, children }: Props) {
   const resolved: Exclude<LinkKind, "smart"> | null = kind === "smart" ? (os === "other" ? null : os) : kind;
   const meta = resolved ? LINK_META[resolved] : null;
   const href = meta ? meta.url || "#" : "#download";
-  const external = !!meta?.url;
+  const external = /^https?:\/\//.test(meta?.url ?? "");
 
   const onClick = (e: MouseEvent<HTMLAnchorElement>) => {
     if (meta?.event) track(meta.event, loc, os);

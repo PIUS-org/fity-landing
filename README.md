@@ -13,6 +13,7 @@ pnpm build          # out/ 폴더에 정적 사이트 생성 (로컬 확인용)
 ## 구조
 ```
 app/
+  policy/terms · policy/privacy   약관 · 처리방침 공개 페이지
   layout.tsx      메타데이터(SEO · OG · 소유확인), 폰트, GA4
   page.tsx        섹션 조립
   globals.css     디자인 토큰 · 전체 스타일 (BI V1.5)
@@ -26,6 +27,8 @@ components/       섹션별 컴포넌트 (Hero, Platform, Consulting, HowItWorks
 lib/
   links.ts        운영 링크 (환경 변수)
   faq.ts          FAQ 내용 (화면 + 구조화 데이터 공용)
+  policy.ts       정책 문서(md) → HTML 변환 (빌드 시점)
+content/policy/   서비스 이용약관(terms.md) · 개인정보 처리방침(privacy.md) 원문. 고치면 /policy/terms · /policy/privacy 에 반영
 public/           이미지 · 폰트
 ```
 
@@ -39,7 +42,8 @@ public/           이미지 · 폰트
 > 정적 export(`output: "export"`)라 환경 변수는 **빌드 시점**에 HTML에 들어간다. 값을 바꾸면 **Redeploy** 해야 반영된다.
 
 ## 배포 전 체크
-- Vercel 환경 변수 전부 채우기 (사이트 주소 · 전문가 로그인 · 스토어 · 정책 · 카카오톡 채널 · 이메일 · GA4 · 소유확인). 로컬은 `.env.local`
+- Vercel 환경 변수 전부 채우기 (사이트 주소 · 전문가 로그인 · 스토어 · 카카오톡 채널 · 이메일 · GA4 · 소유확인). 로컬은 `.env.local`
+- 처리방침 제4조 수탁자(알림톡 · SMS · 본인확인 · 클라우드 · 푸시) 계약 후 업체명 반영 (`content/policy/privacy.md`), 법무 검토 결과 반영
 - 네이버 서치어드바이저 · 구글 서치 콘솔 등록, `sitemap.xml` 제출
 - 공식 App Store · Google Play 배지로 교체 (`components/StoreButtons.tsx`)
 - Pretendard 경량 버전(다이나믹 서브셋)으로 교체 (`public/fonts`, `app/globals.css` 첫 줄)

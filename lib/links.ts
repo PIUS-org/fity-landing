@@ -8,8 +8,8 @@ export const LINKS = {
   android: process.env.NEXT_PUBLIC_ANDROID_PLAY_STORE_URL ?? "",
   appSmart: process.env.NEXT_PUBLIC_APP_SMART_URL ?? "",
   site: process.env.SITE_URL ?? "",
-  terms: process.env.NEXT_PUBLIC_TERMS_URL ?? "",
-  privacy: process.env.NEXT_PUBLIC_PRIVACY_URL ?? "",
+  terms: "/policy/terms/", // 사이트 안 페이지 (content/policy/terms.md)
+  privacy: "/policy/privacy/", // 사이트 안 페이지 (content/policy/privacy.md)
   cs: process.env.NEXT_PUBLIC_CS_URL ?? "",
   csEmail: process.env.NEXT_PUBLIC_CS_EMAIL ?? "",
   ga4: process.env.NEXT_PUBLIC_GA4_ID ?? "",
