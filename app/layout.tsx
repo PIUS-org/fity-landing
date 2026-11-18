@@ -18,7 +18,14 @@ export const metadata: Metadata = {
   ],
   robots: { index: true, follow: true },
   alternates: LINKS.site ? { canonical: "/" } : undefined,
-  icons: { icon: { url: "/img/logo/logo-icon-ink.svg", type: "image/svg+xml" } },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+      { url: "/img/logo/logo-icon-ink.svg", type: "image/svg+xml" },
+    ],
+    apple: { url: "/apple-touch-icon.png", sizes: "180x180" },
+  },
   openGraph: {
     type: "website",
     siteName: "FITY",
