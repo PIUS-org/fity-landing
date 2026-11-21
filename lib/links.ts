@@ -2,6 +2,10 @@
  * 운영 링크 설정 — .env(.local)의 값(SITE_URL, NEXT_PUBLIC_*)으로 채운다. (.env.example 참고)
  * 빈 값인 링크는 누르면 '준비 중' 안내가 뜬다. 운영 배포 전 모두 채울 것.
  */
+/** FITY 카카오톡 채널 (환경 변수가 비어 있을 때 기본값) */
+export const KAKAO_CHANNEL = "https://pf.kakao.com/_taxcWX";
+export const KAKAO_CHANNEL_CHAT = `${KAKAO_CHANNEL}/chat`;
+
 export const LINKS = {
   expertLogin: process.env.NEXT_PUBLIC_EXPERT_WEB_LOGIN_URL ?? "",
   ios: process.env.NEXT_PUBLIC_IOS_APP_STORE_URL ?? "",
@@ -10,7 +14,7 @@ export const LINKS = {
   site: process.env.SITE_URL ?? "",
   terms: "/policy/terms/", // 사이트 안 페이지 (content/policy/terms.md)
   privacy: "/policy/privacy/", // 사이트 안 페이지 (content/policy/privacy.md)
-  cs: process.env.NEXT_PUBLIC_CS_URL ?? "",
+  cs: process.env.NEXT_PUBLIC_CS_URL || KAKAO_CHANNEL_CHAT,
   csEmail: process.env.NEXT_PUBLIC_CS_EMAIL ?? "",
   ga4: process.env.NEXT_PUBLIC_GA4_ID ?? "",
   naverVerification: process.env.NEXT_PUBLIC_NAVER_SITE_VERIFICATION ?? "",
