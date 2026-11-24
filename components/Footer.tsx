@@ -24,7 +24,8 @@ export default function Footer() {
             <span>주소 경기도 용인시 기흥구 강남서로 9, 7층 703호 b520(구갈동, 아카데미프라자)</span>
           </div>
           <div>
-            <span>고객센터 FITY 카카오톡 채널 (평일 10:00~18:00)</span>
+            <span>고객센터 <a href="tel:070-8065-2553">070-8065-2553</a></span><span className="sep">|</span>
+            <span>FITY 카카오톡 채널 (평일 10:00~18:00)</span>
             {LINKS.csEmail && (<><span className="sep">|</span><span>이메일 {LINKS.csEmail}</span></>)}
           </div>
           <div style={{ marginTop: "8px" }}>

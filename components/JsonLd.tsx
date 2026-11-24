@@ -16,7 +16,7 @@ export default function JsonLd() {
       logo: abs("/icon-512.png"),
       description: "퍼스널컬러 · 헤어 · 메이크업 · 골격 · 패션 스타일링 전문가와 고객을 이어주는 온라인 뷰티 · 패션 컨설팅 플랫폼",
       sameAs,
-      contactPoint: { "@type": "ContactPoint", contactType: "customer service", url: LINKS.cs, availableLanguage: "Korean" },
+      contactPoint: { "@type": "ContactPoint", contactType: "customer service", telephone: "+82-70-8065-2553", url: LINKS.cs, availableLanguage: "Korean" },
       address: {
         "@type": "PostalAddress",
         addressCountry: "KR",
