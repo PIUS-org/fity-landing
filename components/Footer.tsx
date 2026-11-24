@@ -10,6 +10,7 @@ export default function Footer() {
           <nav className="ftr-links" aria-label="정책 및 고객 문의">
             <SmartLink kind="terms">서비스 이용약관</SmartLink>
             <SmartLink kind="privacy" className="strong">개인정보 처리방침</SmartLink>
+            <a href="/policy/terms/#refund">환불 규정</a>
             <SmartLink kind="cs">고객 문의</SmartLink>
             <SmartLink kind="expert" loc="footer">전문가 로그인</SmartLink>
           </nav>
