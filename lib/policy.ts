@@ -8,7 +8,7 @@ import { marked } from "marked";
  * - "## 데모 반영 정보" 블록(앱 화면 연결용 내부 메모)은 공개 페이지에서 뺀다.
  * - "## 제목 {#id}" 는 id가 붙은 제목으로 바꿔 /policy/terms#refund 같은 바로가기가 동작하게 한다.
  */
-export type PolicySlug = "terms" | "privacy";
+export type PolicySlug = "terms" | "privacy" | "account-deletion";
 
 export type Policy = { title: string; version: string; effectiveDate: string; html: string };
 
@@ -23,12 +23,13 @@ export function getPolicy(slug: PolicySlug): Policy {
   }
 
   let body = fm ? raw.slice(fm[0].length) : raw;
+  const h1 = body.match(/^# (.+)$/m); // frontmatter가 없는 문서는 # 제목을 이름으로 쓴다
   body = body.replace(/^# .+\n/m, ""); // 제목은 페이지 머리에서 따로 보여준다
   body = body.replace(/^## 데모 반영 정보\n[\s\S]*?\n---\n/m, "");
   body = body.replace(/^(#{2,6}) (.+?) \{#([\w-]+)\}$/gm, (_, h: string, text: string, id: string) => `<h${h.length} id="${id}">${text}</h${h.length}>`);
 
   return {
-    title: meta.name ?? "",
+    title: meta.name ?? h1?.[1].trim() ?? "",
     version: meta.version ?? "",
     effectiveDate: meta.effective_date ?? "",
     html: marked.parse(body, { async: false, gfm: true }),

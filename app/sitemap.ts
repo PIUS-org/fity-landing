@@ -10,5 +10,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: new URL("/", base).toString(), lastModified: now, changeFrequency: "weekly", priority: 1 },
     { url: new URL("/policy/terms/", base).toString(), lastModified: now, changeFrequency: "monthly", priority: 0.3 },
     { url: new URL("/policy/privacy/", base).toString(), lastModified: now, changeFrequency: "monthly", priority: 0.3 },
+    { url: new URL("/account-deletion/", base).toString(), lastModified: now, changeFrequency: "monthly", priority: 0.3 },
   ];
 }
